@@ -23,6 +23,12 @@
 
 最终合稿与导出（Word / PDF / LaTeX 等）由其他 Skill 接手（如 typora-pandoc-zotero-thesis、docx）。本层只保留 Markdown 源稿。
 
+## 按需 handoff
+
+如果用户需要把工作台内容交给 slides、presentation、网页上传、research brief、外部 prompt 或其他下游工具，本层可以按需保存扁平 handoff packet，例如 `handoff_presentation_v1/`。这不是每个项目的必备文件，也不替代六层工作台。
+
+Handoff 包只复制下游需要的一小部分内容。文件夹保持扁平，必须包含 `README.md`，说明本次目标 / 需求、受众、使用场景、文件清单、来源范围和边界。
+
 ## 完整性约束
 
 每个模块至少应有一份对应草稿（一旦该模块开始写）。半成品也要落盘成 vN 草稿，不要把模块草稿留在对话里——对话会丢，草稿不丢。

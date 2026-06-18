@@ -25,6 +25,7 @@ description: >-
 
 - **显式大于隐式**：来源、边界、结构取舍、依赖关系、写作顺序和对账结果都要写出来，不把关键判断留在 AI 的会话记忆里。
 - **元框架优先**：本 Skill 只规定上下文治理、结构讨论、模块化写作和验收机制，不预设任何领域的内容方向、章节模板、论证路线或审美结论。所有具体结构都必须从当前用户、当前读者、当前材料、当前目标现场生成。
+- **可扩展，但要留账**：本工作台不是封闭模板。用户可以按项目需要增删文件、索引、局部约定或派生交付物；只要来源、边界、结构选择、Inventory 对账和验收仍然显式，结构可以加减。
 - **Context 是带来源索引的压缩上下文层**：`00_Context` 加载的是压缩后的稳定上下文，但每个压缩节点必须能沿 `Inventory ID + 来源位置` 回到源材料。对外英文建议用 source-backed context compression 或 traceable compressed context；中文可以说这是"无损上下文压缩"的工程化表达，但不要暗示数学意义上的严格无损。
 - **成稿结构不等于写作顺序**：读者最后看到的章节顺序，和作者实际生产模块的顺序可以不同。实际写作通常应先稳定证据、素材、场景、论证或关键承载模块，再回写开头、摘要、导语、收束或其他依赖上游稳定性的模块。
 
@@ -198,6 +199,19 @@ python <skill-path>/scripts/init_workbench.py --target <project-dir>
 - `typora-pandoc-zotero-thesis`：Pandoc + CSL + BibTeX 体系导出（学术论文常用）
 - `docx`：Word 导出与排版
 - `humanizer-zh`：中文降 AI 味润色
+
+## 按需下游交付（非默认步骤）
+
+当用户明确提出 slides、presentation、PPT、网页上传、research brief、外部 agent prompt、交接包等下游需求时，可以从工作台派生一份 flat handoff packet。它不是 Step 9，不进入默认 pipeline；不要提前生成，也不要把每个项目都变成多一层输出。
+
+默认位置：`04_Drafts/handoff_<purpose>_v<n>/`。最小规则：
+
+- 文件夹保持扁平，不建多级目录，方便一次性打包上传。
+- 必含 `README.md`，说明本次目标 / 需求、受众、使用场景、文件清单、来源范围和边界。
+- 可按需包含核心上下文、关键事实 / 素材索引、可视化素材说明、下游 flat prompt。
+- Handoff packet 是派生产物，不是新的权威源；其中内容仍需能追溯回 `00_Context`、`01_Workflow`、`02_Modules`、`03_DataRoom` 或 `04_Drafts`。
+
+Presentation/PPT 的设计、排版、导出仍交给 `pptx`、`presentations` 或其他下游工具。本 Skill 只负责把上下文、素材、边界和需求打包清楚。
 
 ## 生成型素材
 

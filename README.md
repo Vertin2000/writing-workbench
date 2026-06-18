@@ -9,6 +9,8 @@ Writing Workbench is an agent skill for projects that need to survive many sourc
 
 It does not tell an agent what to write. It gives the agent and the writer a project workspace that keeps context, source material, structure choices, module briefs, drafts, and checklists separate and traceable.
 
+The workspace is intentionally adaptable: teams can add, trim, or derive flat handoff packets when another tool needs a single upload or prompt.
+
 ## What It Creates
 
 The skill scaffolds a six-layer writing workspace:
