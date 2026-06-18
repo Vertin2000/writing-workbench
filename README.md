@@ -51,11 +51,39 @@ Do not use it for one-off emails, short copy, simple edits, or quick Q&A.
 
 Install or copy the `writing-workbench/` folder into your agent's skills directory. Then ask your agent to use the skill for a long-form writing project.
 
-With the `skills` CLI:
+For Codex or agents using the `skills` CLI:
 
 ```bash
 npx skills add https://github.com/Vertin2000/writing-workbench/tree/main/writing-workbench
 ```
+
+For Claude Code, install the folder under your personal skills directory:
+`~/.claude/skills/writing-workbench/SKILL.md`. See the
+[Claude Code skills docs](https://docs.anthropic.com/en/docs/claude-code/skills)
+for personal and project skill locations.
+
+macOS / Linux:
+
+```bash
+tmp="${TMPDIR:-/tmp}/writing-workbench-install"
+rm -rf "$tmp" "$HOME/.claude/skills/writing-workbench"
+git clone --depth 1 https://github.com/Vertin2000/writing-workbench.git "$tmp"
+mkdir -p "$HOME/.claude/skills"
+cp -R "$tmp/writing-workbench" "$HOME/.claude/skills/writing-workbench"
+```
+
+Windows PowerShell:
+
+```powershell
+$tmp = Join-Path $env:TEMP "writing-workbench-install"
+Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue
+git clone --depth 1 https://github.com/Vertin2000/writing-workbench.git $tmp
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Remove-Item -Recurse -Force "$HOME\.claude\skills\writing-workbench" -ErrorAction SilentlyContinue
+Copy-Item -Recurse -Force "$tmp\writing-workbench" "$HOME\.claude\skills\writing-workbench"
+```
+
+Restart Claude Code if this is the first skill directory you created.
 
 To initialize a workspace manually:
 
