@@ -48,6 +48,12 @@ Do not use it for one-off emails, short copy, simple edits, or quick Q&A.
 
 Install or copy the `writing-workbench/` folder into your agent's skills directory. Then ask your agent to use the skill for a long-form writing project.
 
+With the `skills` CLI:
+
+```bash
+npx skills add https://github.com/Vertin2000/writing-workbench/tree/main/writing-workbench
+```
+
 To initialize a workspace manually:
 
 ```powershell
