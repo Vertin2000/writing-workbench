@@ -20,15 +20,16 @@ Start here:
 1. `../full-report-workbench-zh/README.md`
 2. `../full-report-workbench-zh/00_Context/00_项目简报.md`
 3. `../full-report-workbench-zh/00_Context/03_素材归类与对账.md`
-4. `../full-report-workbench-zh/01_Workflow/章节写作看板.md`
-5. `../full-report-workbench-zh/04_Drafts/模拟经营复盘报告_v1.md`
-6. `../full-report-workbench-zh/05_Checklists/全篇一致性.md`
+4. `../full-report-workbench-zh/01_Workflow/结构方案.md`
+5. `../full-report-workbench-zh/01_Workflow/章节写作看板.md`
+6. `../full-report-workbench-zh/04_Drafts/模拟经营复盘报告_v1.md`
+7. `../full-report-workbench-zh/05_Checklists/全篇一致性.md`
 
 ## What This Example Shows
 
-`00_Context/` keeps stable facts small and loaded before every module. The example separates project purpose, data rules, style rules, and inventory reconciliation.
+`00_Context/` keeps stable facts small and loaded before every module. Each Context file includes a source index, so the compressed context can be traced back to Inventory IDs and source locations. The example separates project purpose, data rules, style rules, and inventory reconciliation.
 
-`01_Workflow/` defines the writing order and the standard module call pattern.
+`01_Workflow/` records the structure strategy (`结构方案.md`), the actual writing order, and the standard module call pattern. The final reader-facing structure is not assumed to be the same as the production order.
 
 `02_Modules/` gives each report section a brief: position, required material, minimum deliverable, boundaries, and checklist path.
 

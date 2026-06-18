@@ -79,7 +79,7 @@ def main() -> None:
           f"03_DataRoom / 04_Drafts / 05_Checklists")
     print(f"     Files written: {len(written)}")
     print()
-    print("Next: AI runs Step 4-5 (Context / Modules 切分) and fills in")
+    print("Next: AI runs Step 4-5 (Context / 结构策略 / Modules 切分) and fills in")
     print("project-specific content per writing-workbench skill workflow.")
 
 

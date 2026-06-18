@@ -7,15 +7,15 @@ Stop losing context across long AI writing sessions. Writing Workbench turns any
 
 Writing Workbench is an agent skill for projects that need to survive large context, many source materials, multiple draft modules, and multi-session iteration.
 
-It does not teach an agent what to write. It gives the agent and the writer a project workspace that keeps context, source material, module briefs, drafts, and checklists separate and traceable.
+It does not teach an agent what to write. It gives the agent and the writer a project workspace that keeps context, source material, structure choices, module briefs, drafts, and checklists separate and traceable.
 
 ## What It Creates
 
 The skill scaffolds a six-layer writing workspace:
 
 ```text
-00_Context/      Small, stable context loaded before every module
-01_Workflow/     Writing order, dependencies, and module call template
+00_Context/      Source-backed compressed context loaded before every module
+01_Workflow/     Structure strategy, writing order, dependencies, and module call template
 02_Modules/      One task brief per writing module
 03_DataRoom/     Large source material loaded only when named
 04_Drafts/       Versioned module drafts
@@ -27,12 +27,13 @@ The core workflow is:
 1. Capture intent.
 2. Inventory all context, files, rules, and missing material.
 3. Partition every inventory item into Context, Modules, or DataRoom.
-4. Split project context and writing modules.
-5. Scaffold the workspace.
-6. Fill briefs and write drafts module by module.
-7. Verify drafts against module and whole-document checklists.
+4. Split project context into source-backed Context files.
+5. Compare structure strategies, then choose the reader-facing structure and production order.
+6. Scaffold the workspace.
+7. Fill briefs and write drafts module by module.
+8. Verify drafts against module and whole-document checklists.
 
-The important part is traceability: every source item has a place, every module has a brief, and every draft can be checked against explicit acceptance criteria.
+The important part is explicit traceability: every compressed context item points back to a source, every structure choice is written down, every module has a brief, and every draft can be checked against acceptance criteria.
 
 ## When To Use It
 
@@ -60,12 +61,12 @@ To initialize a workspace manually:
 python writing-workbench/scripts/init_workbench.py --target ./my-writing-project
 ```
 
-The script only copies the empty six-layer skeleton. Project-specific files are created by the agent during the skill workflow, after intent, inventory, partition, and module splitting are clear.
+The script only copies the empty six-layer skeleton. Project-specific files are created by the agent during the skill workflow, after intent, inventory, partition, structure strategy, and module splitting are clear.
 
 ## Example
 
-- [`examples/mini-report-workbench`](examples/mini-report-workbench/) is a small concept example of Inventory, Partition, and Checklist iteration.
-- [`examples/full-report-workbench-zh`](examples/full-report-workbench-zh/) is a full synthetic Chinese workbench with Context, Workflow, Modules, DataRoom, Drafts, and Checklists.
+- [`examples/mini-report-workbench`](examples/mini-report-workbench/) is a bilingual concept example of structure strategy, Inventory, Partition, and Checklist iteration.
+- [`examples/full-report-workbench-zh`](examples/full-report-workbench-zh/) is a full synthetic Chinese workbench with source-backed Context, Workflow, Modules, DataRoom, Drafts, and Checklists.
 - [`examples/full-report-workbench-en`](examples/full-report-workbench-en/) is an English guide to the full Chinese example.
 
 Start with [`examples/full-report-workbench-zh`](examples/full-report-workbench-zh/) for a complete Chinese-language course report workbench. It shows how Context, Workflow, Modules, DataRoom, Drafts, and Checklists work together across a full project.
