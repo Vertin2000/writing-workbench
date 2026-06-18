@@ -1,6 +1,11 @@
 # Writing Workbench
 
-Writing Workbench is an agent skill for long-form writing projects that need to survive large context, many source materials, multiple draft modules, and multi-session iteration.
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3-3776AB.svg)](https://www.python.org/)
+
+Stop losing context across long AI writing sessions. Writing Workbench turns any long-form project into a structured, six-layer workspace.
+
+Writing Workbench is an agent skill for projects that need to survive large context, many source materials, multiple draft modules, and multi-session iteration.
 
 It does not teach an agent what to write. It gives the agent and the writer a project workspace that keeps context, source material, module briefs, drafts, and checklists separate and traceable.
 
@@ -56,6 +61,12 @@ The script only copies the empty six-layer skeleton. Project-specific files are 
 - [`examples/mini-report-workbench`](examples/mini-report-workbench/) is a small concept example of Inventory, Partition, and Checklist iteration.
 - [`examples/full-report-workbench-zh`](examples/full-report-workbench-zh/) is a full synthetic Chinese workbench with Context, Workflow, Modules, DataRoom, Drafts, and Checklists.
 - [`examples/full-report-workbench-en`](examples/full-report-workbench-en/) is an English guide to the full Chinese example.
+
+Start with [`examples/full-report-workbench-zh`](examples/full-report-workbench-zh/) for a complete Chinese-language course report workbench. It shows how Context, Workflow, Modules, DataRoom, Drafts, and Checklists work together across a full project.
+
+## Community
+
+GitHub Discussions are open for questions, example workbenches, and notes on what you used the framework to write.
 
 ## 中文说明
 
