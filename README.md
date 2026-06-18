@@ -53,7 +53,9 @@ The script only copies the empty six-layer skeleton. Project-specific files are 
 
 ## Example
 
-See [`examples/mini-report-workbench`](examples/mini-report-workbench/) for a small, synthetic example of how Inventory, Partition, and Checklists work together.
+- [`examples/mini-report-workbench`](examples/mini-report-workbench/) is a small concept example of Inventory, Partition, and Checklist iteration.
+- [`examples/full-report-workbench-zh`](examples/full-report-workbench-zh/) is a full synthetic Chinese workbench with Context, Workflow, Modules, DataRoom, Drafts, and Checklists.
+- [`examples/full-report-workbench-en`](examples/full-report-workbench-en/) is an English guide to the full Chinese example.
 
 ## 中文说明
 
