@@ -1,0 +1,197 @@
+---
+name: writing-workbench
+description: >-
+  Set up a structured writing workbench for any long-form writing task —
+  academic, professional, creative, technical, legal, journalistic. Use
+  whenever the user starts a writing project meeting at least two of these
+  three conditions: substantial context (research material, source documents,
+  character bibles, regulations, data), substantial output (chapters, sections,
+  multi-part deliverable), or multi-turn iteration across sessions. The
+  workbench provides a META-FRAMEWORK, NOT content templates — the AI judges,
+  with the user, what each project's Context layer should contain. Trigger on
+  phrases like 写作工作台 / 长文写作 / 起草长文 / 起草章节 / 起草初稿 / 多章节 / 长篇 /
+  writing workbench / long-form draft / multi-chapter, OR whenever the user
+  describes a writing project meeting the two-of-three test above, even
+  without explicit request.
+---
+
+# writing-workbench — 长上下文写作通用元框架
+
+## 这是什么
+
+一个**元框架**，把任意长上下文写作任务装进 6 层骨架，并由 AI 与用户协同决定每个项目的具体切分方式。它不规定内容，只规定**结构**与**完整性**。
+
+## 何时触发
+
+满足下列三条中至少两条的写作任务就该用本 Skill：
+
+- **长输入**：项目有相当体量的素材、设定、规范、数据要消化
+- **长输出**：成稿是多块结构化产出（多章 / 多节 / 多幕 / 多部分）
+- **多轮迭代**：写作要分多次会话、需要跨会话保留上下文
+
+不触发的：单封邮件、推文、简单问答、纯实时对话、流水叙述。
+
+## 6 层骨架
+
+```
+00_Context/      每次开工必读的预加载层（小、稳、跨模块共享）
+01_Workflow/     写作顺序、依赖图、单模块调用模板
+02_Modules/      每模块一份独立任务书（一次写一块）
+03_DataRoom/     大体积外部素材，按需调用（无素材项目可全删）
+04_Drafts/       模块草稿与版本演进
+05_Checklists/   模块级 + 全篇一致性两层验收
+```
+
+每层根目录有一份 README.md 解释自己的角色、生命周期、与其他层的关系、完整性约束。**只读这 6 份 README 就能理解整套骨架**。
+
+## 已有工作台 / 续写模式
+
+如果目标目录已经有这 6 层结构，先接手现状，再补缺口。
+
+- 先读目录结构、6 份 README、现有 Context、Workflow、Modules、DataRoom 索引、Drafts 和 Checklists。
+- 不默认重走 8 步，也不重复追问文件里已经写清楚的事实。
+- 给用户一个短诊断：当前有什么、缺什么、下一步最值得补什么。
+- 把已有文件纳入 Inventory；发现边界不清时，再回到 Partition 做对账。
+
+这不是跳过完整性，而是尊重已经存在的工作。这里需要判断：能从文件看出的事实就直接吸收，真正影响方向的偏好再问用户。
+
+## 8 步元工作流
+
+### Step 1 — Intent
+
+开放式问答把握项目轮廓：
+
+- 要写什么（任务形态：论文 / 报告 / 小说 / 标书 / 翻译 / ...）
+- 目标体量（字数 / 篇幅 / 模块数估计）
+- 是否有外部素材（粗略量级）
+- 目标读者
+- 工期与迭代频率
+- 已有的方法论 / 风格偏好 / 强制规范
+
+**不预设任务类型分类，不套用既定模板**。这一步只是收集，不下判断。
+
+### Step 2 — Inventory
+
+让用户**散乱列出**所有要进工作台的上下文项。允许混杂：
+
+- 已有文件（设计稿、笔记、研报、数据表、法规、判例、角色档案、既有草稿、对照文本……）
+- 已有规则（叙事主线、风格偏好、引用规范、措辞禁忌、术语表草稿、pre-analysis plan、世界观设定……）
+- 待补素材（要去问的人、要去读的资料、要去采的数据……）
+
+**只列名，不组织，不排序**。AI 在这一步只负责追问"还有吗""是不是漏了什么类别"，把清单收拢。
+
+### Step 3 — Partition（关键步骤）
+
+AI 把 Inventory 中的**每一项**显式归到三个去处之一：
+
+- **00_Context**：跨模块共享、稳定、小体量 → 每次预加载
+- **02_Modules 专载**：仅个别模块要用 → 写进对应模块任务书的"必读材料"
+- **03_DataRoom**：大体积、按需调用 → 在 DataRoom 里寄存，由模块任务书点名调用
+
+**完整性硬约束**：
+
+- AI 必须在 Partition 输出末尾**显式打印对账行**：
+  ```
+  Inventory 项总数: X
+  已归类项: X
+  未归类项: 0
+  ```
+- 如未归类项 ≠ 0，必须列出未归类项与原因，要求用户决策，**不允许默默跳过**。
+- 待补素材也要归类（通常归 03_DataRoom，注明状态为"待补"）。
+
+输出形式：分区清单（按三个去处分组列出），用户审阅后可调整边界，AI 重算对账行。
+
+### Step 4 — Context 切分（关键步骤）
+
+基于 Step 3 进入 00_Context 的那批项，AI **现场提议**把它们切成 N 份 Context 文件，给每份起名。命名前**主动询问用户是否已有沿用习惯**（代号前缀、中英文偏好、命名风格），有则继承，无则现场协商。原则：
+
+- 每份**内部高度内聚**（一份只讲一个主题）
+- 各份之间**低耦合**（最小重复）
+- 每份**单独可读**（不假设其他份已被读过）
+
+**N 不预设**——可以是 2 份也可以是 6 份。如果项目简单到 1 份就够，那就 1 份。
+
+提议后让用户确认或调整。这一步不预填内容，只确定文件清单与命名。
+
+### Step 5 — Modules 切分
+
+基于 Intent + 分到 `02_Modules` 的那批项，AI 现场提议**模块清单**——本项目的最小写作单元如何切分。模块名不预设层级（章 / 节 / 部分 / 幕都可以），按项目自然结构来。M 不预设，3 个或 12 个都行。
+
+同时初步给出**写作顺序与依赖关系**（哪个模块依赖哪个上游，哪个可独立先写），写进 01_Workflow。
+
+提议后让用户确认或调整。
+
+### Step 6 — Scaffold
+
+**前置条件**：Step 1-5 全部在对话里完成、未触碰目标目录。Scaffold 是首次动盘的步骤。
+
+**前置检查**：如目标目录已存在用户文件，**先回 Step 2 把它们纳入 Inventory 并重做 Partition**，再调用脚本，避免 `--force` 直接覆盖丢失。
+
+调用脚本把 6 层空骨架拷到目标目录：
+
+```powershell
+python <skill-path>/scripts/init_workbench.py --target <project-dir>
+```
+
+`<skill-path>` 以本 SKILL.md 文件所在目录为准，AI 在执行前自行解析。
+
+然后**根据 Step 4-5 的具体切分方案，由 AI 现场生成本项目专属的内容**——不是从模板拷贝（模板只有 6 份 README 和空目录），且每一项都必须**逐字写出文件**，不允许只 touch 空文件后口头声称已生成：
+
+- `00_Context/` 下为每份 Context 创建独立文件，含一级标题（# 主题名）和一行 placeholder（如 `<!-- 用户在 Step 7 填入：xxx -->`）
+- `02_Modules/` 下为每个模块创建任务书空壳，**逐字打印 5 个二级标题**：`## 定位` / `## 必读材料` / `## 最小交付物` / `## 不得写入内容` / `## 验收清单`，每个标题下留一行 placeholder
+- `01_Workflow/` 写入本项目的**写作顺序与依赖表**（建议表格形式：模块 / 上游依赖 / 就绪程度），加一份单模块调用模板（含 6 步：加载 Context → 加载本模块任务书 → 加载必读素材 → 写作 → 保存到 04_Drafts → 对照 05_Checklists 验收）。模板内**固化三种占位符约定**作为工程惯例默认值——`[DATA GAP: 数据名 | 用途 | 建议来源]` / `[SOURCE: 文件 | 页码 | 段落]` / `[DEFER: 暂缓项 | 原因 | 触发条件]`，写作期遇缺即用，项目可在 00_Context 重新定义命名或扩充类别
+- `05_Checklists/` 为每个模块创建一份验收清单空壳（**05_Checklists 是权威源；02_Modules 任务书的"验收清单"字段以路径单向引用本层文件，不重复内容**），再加一份全篇一致性清单（覆盖术语 / 论点不矛盾 / 衔接 / 标注 / 格式 / 关键数字与事实复述六个常见维度，由用户 Step 7 裁剪）
+- `03_DataRoom/` 如 Partition 已分到本层有素材，则为每类素材建索引文件；如无素材，保留仅 README，**等项目走完一遍确认无外部素材后再删除整层**
+
+### Step 7 — Fill
+
+用户根据 Step 3 Partition 把内容填进 00_Context 与 02_Modules 任务书。
+
+**完整性核验**：每当用户填完一份文件并示意"这份完成"，AI 取出 Step 3 Partition 的清单，**对那份文件应承载的每一项 inventory 逐条核验**，逐项报告：
+
+```
+- 项 i：已落入文件 X 的「Y 段落 / Y 章节」 ✓
+- 项 j：未落入  ✗  ← 追问用户是遗漏还是改了归类
+```
+
+发现遗漏不允许默默放过，必须列出并要求用户决策（补写 / 重新归类 / 主动放弃）。这是 Step 3 完整性硬约束的延续。
+
+### Step 8 — Draft + Verify + Compile
+
+按 01_Workflow 的依赖顺序逐模块起草：
+
+- 加载 00_Context 全部
+- 加载当前模块任务书
+- 按任务书"必读材料"加载 03_DataRoom 中的指定素材
+- 写作，遇缺立即用占位符标注。**格式按 01_Workflow 单模块调用模板中已固化的三种约定**（`[DATA GAP]` / `[SOURCE]` / `[DEFER]`），不在此重复定义。项目若需改写命名或扩充类别，在 00_Context 显式声明覆盖。
+- 落盘到 04_Drafts/ 加版本号
+- 对照 05_Checklists 验收
+
+合稿与导出阶段按需调用其他 Skill：
+
+- `typora-pandoc-zotero-thesis`：Pandoc + CSL + BibTeX 体系导出（学术论文常用）
+- `docx`：Word 导出与排版
+- `humanizer-zh`：中文降 AI 味润色
+
+## 生成型素材
+
+数据表、图表和脚本也是写作素材。它们通常进 `03_DataRoom`，也可以按项目习惯放在 `tools/`，但要在 DataRoom 索引里指到它们。
+
+有数据或图表时，优先留下四样东西：原始来源、生成命令、输出文件、口径说明。这样后续写作能追溯数字，不靠手工复制。
+
+不强制脚本化。只有脚本能减少手工复制、口径漂移或重复劳动时，再把它作为写作方法的一部分。
+
+## 跨步骤补充准则（Step 1-8 之外）
+
+以下 5 条跨多个 Step 生效，与 Step 1-8 内已定义的硬约束（对账行 / 不预设任务类型 / 不预设 N、M / Step 1-5 禁止动盘 / 已有用户文件先纳入 Inventory）不重复：
+
+1. **小项目可走简化分支**。如果 Inventory 项 ≤ 5、模块 ≤ 3、无外部素材，可以合并 Step 3-4 为"全部进 00_Context 单一文件 + Modules 直接列出"。但即使简化，也要走完 Inventory 与对账。
+
+2. **不复刻历史项目细节**。Skill 不携带任何项目实例的术语、章节名、规范条款。一切由当前项目从零生成。
+
+3. **触发后先与用户对齐**。识别到长写作任务时，先用一两句话说明"我要把这个项目装进写作工作台，我们一起按 8 步走，第一步 Intent 是这样……"，再开始 Step 1。
+
+4. **隐性 taste 类输入主动追问**。Step 1 中「风格偏好 / 措辞规范 / 指导思想 / 用语禁忌」这类隐性 taste，用户最容易忘说（不是不会，而是默认"AI 应该懂"）。AI 必须明确问一次，得到用户回答（包括"没有特别要求"）后才放行——**不接受沉默作为"没有"**。
+
+5. **工作台健康检查**。阶段性复盘时，用短清单看五件事：Context 有没有缺关键口径或变得太重；Modules 能不能直接指导写作；DataRoom 有没有索引和无人引用的素材；Drafts 能不能追溯到数据、任务书和文风要求；Checklists 是否够用。输出问题和下一步，不做复杂审计。
+
