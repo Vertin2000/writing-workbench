@@ -30,7 +30,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--force",
         action="store_true",
-        help="Allow scaffolding into a non-empty directory (overwrites conflicts).",
+        help=(
+            "Allow scaffolding into a non-empty directory. Use only after "
+            "existing files have been inventoried; conflicting skeleton files "
+            "will be overwritten."
+        ),
     )
     return p.parse_args()
 
@@ -43,8 +47,8 @@ def ensure_target(target: Path, force: bool) -> None:
         if has_content and not force:
             sys.exit(
                 f"[ERROR] Target directory is not empty: {target}\n"
-                f"        Pass --force to scaffold anyway (will overwrite "
-                f"conflicting files)."
+                f"        Inventory existing files first. Then pass --force "
+                f"if scaffolding here is still intended."
             )
     else:
         target.mkdir(parents=True, exist_ok=True)
@@ -79,8 +83,8 @@ def main() -> None:
           f"03_DataRoom / 04_Drafts / 05_Checklists")
     print(f"     Files written: {len(written)}")
     print()
-    print("Next: AI runs Step 4-5 (Context / 结构策略 / Modules 切分) and fills in")
-    print("project-specific content per writing-workbench skill workflow.")
+    print("Next: AI fills project-specific Context, Workflow, Modules,")
+    print("DataRoom indexes, and Checklists from the confirmed Step 4-5 plan.")
 
 
 if __name__ == "__main__":

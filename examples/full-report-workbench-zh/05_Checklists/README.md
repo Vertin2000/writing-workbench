@@ -10,4 +10,4 @@
 
 ## 使用规则
 
-模块写完后先跑对应模块清单，再看全篇一致性。阶段性复盘时使用 `工作台基座验收.md`，确认 Context、Modules、DataRoom、Drafts 和 Checklists 没有变质。
+模块写完后先跑对应模块清单，再看全篇一致性。阶段性复盘时使用 `工作台基座验收.md`，确认 Context、Workflow、Modules、DataRoom、Drafts 和 Checklists 没有变质。

@@ -2,7 +2,7 @@
 
 This example uses synthetic material to show how Writing Workbench keeps a small report project traceable. It is not a full generated workspace; it shows the decisions an agent should make before scaffolding.
 
-这个迷你示例使用合成材料，展示 Writing Workbench 在脚手架生成前应该怎样做结构判断、素材归类和验收清单迭代。它不是完整工作台，只保留最小概念样本。
+这个迷你示例使用合成材料，说明 Writing Workbench 在脚手架生成前怎样做结构判断、素材归类和验收清单迭代。它不是完整工作台，只保留最小概念样本。
 
 ## Intent
 
@@ -87,4 +87,4 @@ Add this whole-document consistency check:
 
 This is the value of `05_Checklists`: each real project can discover a new acceptance dimension and preserve it for the next writing pass.
 
-中文对应：第一版草稿后，团队发现同一个关键数字在摘要和阶段复盘里用几乎相同句式重复出现。这不是事实错误，但会让报告显得机械。把这个发现固化进 `05_Checklists`，就是工作台越跑越好的方式。
+中文对应：第一版草稿后，团队发现同一个关键数字在摘要和阶段复盘里用几乎相同句式重复出现。这不是事实错误，但会让报告显得机械。把这个发现固化进 `05_Checklists`，工作台下一轮就会更好用。
