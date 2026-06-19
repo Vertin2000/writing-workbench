@@ -2,6 +2,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3-3776AB.svg)](https://www.python.org/)
+[![skills.sh](https://skills.sh/b/Vertin2000/writing-workbench)](https://skills.sh/Vertin2000/writing-workbench)
 
 Stop losing context across long writing projects. Writing Workbench turns a long-form task into a traceable six-layer workspace.
 
@@ -54,8 +55,21 @@ Install or copy the `writing-workbench/` folder into your agent's skills directo
 For Codex or agents using the `skills` CLI:
 
 ```bash
+npx skills add Vertin2000/writing-workbench
+```
+
+If you want to point explicitly at the skill subdirectory:
+
+```bash
 npx skills add https://github.com/Vertin2000/writing-workbench/tree/main/writing-workbench
 ```
+
+## skills.sh
+
+- Repo page: <https://skills.sh/Vertin2000/writing-workbench>
+- Skill page: <https://skills.sh/Vertin2000/writing-workbench/writing-workbench>
+
+skills.sh leaderboard and search visibility are driven mostly by anonymous install telemetry and cache refreshes, so a newly indexed skill may not be easy to find from the homepage immediately.
 
 For Claude Code, install the folder under your personal skills directory:
 `~/.claude/skills/writing-workbench/SKILL.md`. See the
