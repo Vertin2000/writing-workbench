@@ -198,6 +198,10 @@ python <skill-path>/scripts/init_workbench.py --target <project-dir>
 - 落盘到 04_Drafts/ 加版本号
 - 对照 05_Checklists 验收
 
+**图示辅助（轻量建议，不是强制步骤）**：起草、复盘结构或合稿时，顺手判断有没有信息适合用图帮助读者理解。若流程图、依赖图、时间线、对照矩阵、概念关系或论证路径能让 Markdown 更清楚，可直接手写 Mermaid 代码块放进正文草稿。不要为了有图而加图；只有它能减少解释成本时才用。
+
+如果更适合真实图片、截图、照片、地图、插图、数据图表或生成型视觉素材，不要打断主写作流程。另存一份辅助说明，如 `04_Drafts/visual_suggestions_v1.md`，逐项写清建议放置位置、读者收益、素材类型，以及建议如何搜索、截取、绘制或生成。该说明是写作建议，不是新的权威源。
+
 合稿与导出阶段按需调用其他 Skill：
 
 - `typora-pandoc-zotero-thesis`：Pandoc + CSL + BibTeX 体系导出（学术论文常用）
