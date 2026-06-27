@@ -36,6 +36,15 @@ def parse_args() -> argparse.Namespace:
             "will be overwritten."
         ),
     )
+    p.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help=(
+            "When used with --force, skip files that already exist in the "
+            "target directory instead of overwriting them. Safer default for "
+            "directories with user content."
+        ),
+    )
     return p.parse_args()
 
 
@@ -54,11 +63,12 @@ def ensure_target(target: Path, force: bool) -> None:
         target.mkdir(parents=True, exist_ok=True)
 
 
-def copy_skeleton(target: Path) -> list[Path]:
+def copy_skeleton(target: Path, skip_existing: bool = False) -> tuple[list[Path], list[Path]]:
     if not SKELETON_DIR.is_dir():
         sys.exit(f"[ERROR] Skeleton source missing: {SKELETON_DIR}")
 
     written: list[Path] = []
+    skipped: list[Path] = []
     for src in SKELETON_DIR.rglob("*"):
         rel = src.relative_to(SKELETON_DIR)
         dst = target / rel
@@ -66,9 +76,12 @@ def copy_skeleton(target: Path) -> list[Path]:
             dst.mkdir(parents=True, exist_ok=True)
         else:
             dst.parent.mkdir(parents=True, exist_ok=True)
+            if skip_existing and dst.exists():
+                skipped.append(dst)
+                continue
             shutil.copy2(src, dst)
             written.append(dst)
-    return written
+    return written, skipped
 
 
 def main() -> None:
@@ -76,12 +89,14 @@ def main() -> None:
     target = Path(args.target).resolve()
 
     ensure_target(target, args.force)
-    written = copy_skeleton(target)
+    written, skipped = copy_skeleton(target, skip_existing=args.skip_existing)
 
     print(f"[OK] Scaffolded writing workbench at: {target}")
     print(f"     Layers: 00_Context / 01_Workflow / 02_Modules / "
           f"03_DataRoom / 04_Drafts / 05_Checklists")
     print(f"     Files written: {len(written)}")
+    if skipped:
+        print(f"     Files skipped (already exist): {len(skipped)}")
     print()
     print("Next: AI fills project-specific Context, Workflow, Modules,")
     print("DataRoom indexes, and Checklists from the confirmed Step 4-5 plan.")

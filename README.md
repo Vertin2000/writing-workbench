@@ -64,6 +64,8 @@ If you want to point explicitly at the skill subdirectory:
 npx skills add https://github.com/Vertin2000/writing-workbench/tree/main/writing-workbench
 ```
 
+Once installed, start a writing project by telling your agent something like: "I need to write a 5000-word research report on X — let's use the writing workbench." The agent walks you through the 8-step workflow from Intent.
+
 ## skills.sh
 
 - Repo page: <https://skills.sh/Vertin2000/writing-workbench>
@@ -126,6 +128,16 @@ GitHub Discussions are open for questions, example workbenches, and notes on wha
 Writing Workbench 是一个面向长上下文写作项目的 Agent Skill。它不替你规定内容模板；它把素材、上下文、模块任务书、草稿和验收清单分层管理，让长文项目在多轮会话里不散架。
 
 它特别适合论文、报告、标书、长篇创作、技术文档、法律/政策分析等多素材、多章节、多轮迭代的写作任务。
+
+快速上手：安装后对 Agent 说"我有一个长文写作项目，用写作工作台"即可触发 8 步工作流。完整中文工作台示例见 [`examples/full-report-workbench-zh`](examples/full-report-workbench-zh/)。
+
+手动初始化骨架：
+
+```bash
+python writing-workbench/scripts/init_workbench.py --target ./my-project
+```
+
+脚本只拷空骨架。项目专属文件在 AI 走完 Intent → Inventory → Partition → Context 切分 → 结构策略后现场生成。
 
 ## License
 
