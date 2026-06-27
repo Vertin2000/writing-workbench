@@ -40,24 +40,26 @@ def parse_args() -> argparse.Namespace:
         "--skip-existing",
         action="store_true",
         help=(
-            "When used with --force, skip files that already exist in the "
-            "target directory instead of overwriting them. Safer default for "
-            "directories with user content."
+            "Scaffold into a non-empty directory but never overwrite files "
+            "that already exist there; only missing skeleton files are "
+            "written. Safer than --force for directories with user content. "
+            "Inventory existing files first."
         ),
     )
     return p.parse_args()
 
 
-def ensure_target(target: Path, force: bool) -> None:
+def ensure_target(target: Path, force: bool, skip_existing: bool) -> None:
     if target.exists():
         if not target.is_dir():
             sys.exit(f"[ERROR] Target exists but is not a directory: {target}")
         has_content = any(target.iterdir())
-        if has_content and not force:
+        if has_content and not force and not skip_existing:
             sys.exit(
                 f"[ERROR] Target directory is not empty: {target}\n"
-                f"        Inventory existing files first. Then pass --force "
-                f"if scaffolding here is still intended."
+                f"        Inventory existing files first. Then pass "
+                f"--skip-existing to add only missing skeleton files, or "
+                f"--force to overwrite conflicts."
             )
     else:
         target.mkdir(parents=True, exist_ok=True)
@@ -88,7 +90,7 @@ def main() -> None:
     args = parse_args()
     target = Path(args.target).resolve()
 
-    ensure_target(target, args.force)
+    ensure_target(target, args.force, args.skip_existing)
     written, skipped = copy_skeleton(target, skip_existing=args.skip_existing)
 
     print(f"[OK] Scaffolded writing workbench at: {target}")
